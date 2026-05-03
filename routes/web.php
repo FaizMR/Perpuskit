@@ -84,9 +84,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('dashboard.admin');
 
         Route::resource('users', UserController::class);
-        Route::resource('permintaans', LoanExtensionRequestController::class);
-        Route::resource('pengembalians', ReturnBookController::class);
-        Route::resource('pembayarans', LoanPaymentController::class);
     });
     Route::group(['middleware' => ['auth', 'verified', 'can:anggota']], function () {
         Route::get('/dashboard/anggota', [DashboardAnggotaController::class, 'index'])
@@ -107,6 +104,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('statuspeminjamans', LoanStatusController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('databukus', BookController::class);
+        Route::resource('permintaans', LoanExtensionRequestController::class);
+        Route::resource('pengembalians', ReturnBookController::class);
+        Route::resource('pembayarans', LoanPaymentController::class);
     });
 });
 

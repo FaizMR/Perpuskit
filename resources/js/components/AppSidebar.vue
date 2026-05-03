@@ -37,7 +37,6 @@ import {
     Folders,
     History,
     LayoutGrid,
-    LibraryBig,
     Undo2,
     User,
 } from 'lucide-vue-next';
@@ -164,14 +163,29 @@ const petugasuNavItems: NavGroup[] = [
         label: 'Transaksi',
         items: [
             {
-                title: 'Pengajuan Peminjaman',
+                title: 'Pengajuan Peminjaman Buku',
                 href: pengajuanpeminjamans.index(),
                 icon: BookMarked,
             },
             {
                 title: 'Status Peminjaman Buku',
                 href: statuspeminjamans.index(),
-                icon: LibraryBig,
+                icon: Clock,
+            },
+            {
+                title: 'Perpanjangan Peminjaman',
+                href: permintaans.index(),
+                icon: CalendarClock,
+            },
+            {
+                title: 'Pengembalian Buku',
+                href: pengembalians.index(),
+                icon: Undo2,
+            },
+            {
+                title: 'Pembayaran Denda',
+                href: pembayarans.index(),
+                icon: Banknote,
             },
         ],
     },
