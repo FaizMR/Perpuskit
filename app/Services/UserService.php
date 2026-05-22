@@ -39,34 +39,6 @@ class UserService
         ]);
     }
 
-    // public function updateUser(User $user, array $data): void
-    // {
-    //     $name = Str::slug($data['name']);
-
-    //     if (isset($data['profile_user'])) {
-    //         $file = $data['profile_user'];
-
-    //         if ($user->profile_user && Storage::disk('public')->exists($user->profile_user)) {
-    //             $filename = basename($user->profile_user);
-    //             $timestamp = now()->format('Ymd_His');
-    //             $backupPath = "backup/profile_user/{$name}/backup_{$timestamp}_{$filename}";
-
-    //             Storage::disk('public')->makeDirectory("backup/profile_user/{$name}");
-    //             Storage::disk('public')->move($user->profile_user, $backupPath);
-    //         }
-
-    //         $folderPath = "profile_user/{$name}";
-    //         $data['profile_user'] = $file->storeAs(
-    //             $folderPath,
-    //             $file->getClientOriginalName(),
-    //             'public'
-    //         );
-    //     } else {
-    //         unset($data['profile_user']);
-    //     }
-
-    //     $user->update($data);
-    // }
     public function updateUser(User $user, array $data): void
     {
         $name = Str::slug($data['name']);

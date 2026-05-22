@@ -60,49 +60,28 @@ const clearCustomMessage = (event: Event) => {
     <!-- <Head title="Merubah Kategori" /> -->
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="rounded-x1 flex h-full flex-1 flex-col gap-4 p-4">
-            <div class="mx-auto mt-8 min-w-md p-6">
+            <div class="mx-auto mt-2 md:mt-8 p-6">
                 <form @submit.prevent="submit">
-                    <Card class="mx-auto w-full max-w-6xl">
+                    <Card class="mx-auto w-full max-w-sm md:max-w-6xl">
                         <CardHeader>
                             <CardTitle>Edit Kategori Buku</CardTitle>
-                            <CardDescription
-                                >Silakan edit isi data
-                                Kategori.</CardDescription
-                            >
+                            <CardDescription>Silakan edit isi data
+                                Kategori.</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div
-                                class="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-4"
-                            >
+                            <div class="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-4">
                                 <div class="grid gap-2">
                                     <Label for="name">Nama Lengkap</Label>
-                                    <Input
-                                        id="name"
-                                        type="text"
-                                        required
-                                        :tabindex="2"
-                                        autocomplete="name"
-                                        v-model="form.name"
-                                        placeholder="Masukkan nama lengkap"
-                                        ref="nameInput"
-                                        @invalid="setCustomMessage"
-                                        @input="clearCustomMessage"
-                                    />
+                                    <Input id="name" type="text" required :tabindex="2" autocomplete="name"
+                                        v-model="form.name" placeholder="Masukkan nama lengkap" ref="nameInput"
+                                        @invalid="setCustomMessage" @input="clearCustomMessage" />
                                     <InputError :message="form.errors.name" />
                                 </div>
                             </div>
                         </CardContent>
                         <CardFooter class="flex justify-between px-6 pt-5 pb-6">
-                            <Button
-                                type="submit"
-                                class="mt-4 w-full"
-                                :tabindex="9"
-                                :disabled="form.processing"
-                            >
-                                <LoaderCircle
-                                    v-if="form.processing"
-                                    class="h-4 w-4 animate-spin"
-                                />
+                            <Button type="submit" class="mt-4 w-full" :tabindex="9" :disabled="form.processing">
+                                <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
                                 Simpan
                             </Button>
                         </CardFooter>

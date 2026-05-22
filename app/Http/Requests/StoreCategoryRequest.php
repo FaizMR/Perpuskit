@@ -25,4 +25,23 @@ class StoreCategoryRequest extends FormRequest
             'name' => 'required|string|max:255|unique:categories,name',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            // Validasi String & Format
+            'string'    => ':attribute harus berupa teks.',
+
+            // Validasi Keunikan & Kecocokan
+            'unique'    => ':attribute sudah terdaftar sebelumnya.',
+
+            // Validasi Panjang & Batas
+            'min'       => [
+                'string'   => ':attribute minimal harus :min karakter.',
+            ],
+            'max'       => [
+                'string'   => ':attribute maksimal :max karakter.',
+                'file'     => 'Ukuran :attribute maksimal 10MB.',
+            ],
+        ];
+    }
 }

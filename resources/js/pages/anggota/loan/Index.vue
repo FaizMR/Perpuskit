@@ -154,9 +154,9 @@ const popoverOpen = ref(false);
 <template>
     <!-- <Head title="Peminjaman Buku" /> -->
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="mx-auto mt-5 max-w-6xl overflow-x-auto">
+        <div class="md:mx-auto mt-10 max-w-sm md:max-w-6xl overflow-x-auto md:mt-5">
             <FlashMessage />
-            <Card class="border-transparent">
+            <Card class="border-transparent mt-2">
                 <CardContent>
                     <div class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center">
                         <div class="flex items-end gap-2">
@@ -177,8 +177,7 @@ const popoverOpen = ref(false);
                             <Tooltip v-if="!popoverOpen">
                                 <Popover>
                                     <TooltipTrigger as-child>
-                                        <PopoverTrigger><Button variant="outline"
-                                                class="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700">
+                                        <PopoverTrigger><Button variant="outline" class="flex items-center gap-2 ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -261,7 +260,7 @@ const popoverOpen = ref(false);
 
                                 <Dialog v-model:open="isOpen[peminjamanbukus.id]" :key="peminjamanbukus.id">
                                     <DialogTrigger as-child>
-                                        <Button variant="destructive" size="icon" class="w-full sm:w-20">
+                                        <Button variant="destructive" size="icon" class="w-20">
                                             Ajukan
                                         </Button>
                                     </DialogTrigger>
@@ -270,7 +269,7 @@ const popoverOpen = ref(false);
                                             <DialogTitle>Konfirmasi Pengajuan Peminjaman
                                                 Buku</DialogTitle>
                                             <h1 class="mt-2">
-                                                Dengan Judul:
+                                                Dengan Judul:<br />
                                                 <strong>{{
                                                     peminjamanbukus.judul
                                                 }}</strong>
@@ -304,8 +303,11 @@ const popoverOpen = ref(false);
                         </template>
                     </DataTable>
                 </CardContent>
+                <div class="mb-10 mr-5 ml-6 md:mr-0 md:ml-0">
+                    <Pagination :previousPage="pagination.previous" :nextPage="pagination.next"
+                        :links="props.BookLoan.links" />
+                </div>
             </Card>
         </div>
-        <Pagination :previousPage="pagination.previous" :nextPage="pagination.next" :links="props.BookLoan.links" />
     </AppLayout>
 </template>

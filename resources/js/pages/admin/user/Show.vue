@@ -11,7 +11,7 @@ const { currentUser } = defineProps<{
         data: User;
     };
 }>();
-console.log(currentUser.data);
+console.log(currentUser.data.profile_user);
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Pengguna',
@@ -45,18 +45,13 @@ const profileImage = computed(() => {
 
         <!-- PROFILE HEADER -->
         <Card class="mb-6 border border-white/10 bg-muted/30">
-            <CardContent class="flex items-center gap-6 py-6">
+            <CardContent class="grid grid-cols-1 md:flex items-center gap-6 py-6">
                 <!-- Foto Profil -->
                 <div class="relative">
                     <div
-                        class="flex h-70 w-70 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-muted text-xl font-semibold text-muted-foreground shadow-lg"
-                    >
-                        <img
-                            v-if="profileImage"
-                            :src="profileImage"
-                            alt="Foto Profil"
-                            class="h-full w-full object-cover"
-                        />
+                        class="flex h-70 w-70 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-muted text-xl font-semibold text-muted-foreground shadow-lg">
+                        <img v-if="profileImage" :src="profileImage" alt="Foto Profil"
+                            class="h-full w-full object-cover" />
                         <span v-else>
                             {{ currentUser.data.name.charAt(0) }}
                         </span>

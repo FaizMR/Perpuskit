@@ -71,7 +71,7 @@ const adminNavItems: NavGroup[] = [
                 href: categories.index(),
                 icon: Folders,
             },
-            { title: 'Data Buku', href: databukus.index(), icon: Book },
+            { title: 'Manajemen Buku', href: databukus.index(), icon: Book },
         ],
     },
     {
@@ -156,7 +156,7 @@ const petugasuNavItems: NavGroup[] = [
                 href: categories.index(),
                 icon: Folders,
             },
-            { title: 'Data Buku', href: databukus.index(), icon: Book },
+            { title: 'Manajemen Buku', href: databukus.index(), icon: Book },
         ],
     },
     {

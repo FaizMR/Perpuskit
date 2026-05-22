@@ -45,7 +45,7 @@ class Loan extends Model
     }
     public function scopeLoanRequest($query)
     {
-        return $query->where('status', 'pending');
+        return $query->where('status', 'pending')->latest();
     }
     public function scopeMyRequest($query)
     {

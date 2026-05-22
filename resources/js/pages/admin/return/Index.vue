@@ -112,8 +112,8 @@ const handleUpdateStatus = (
         type === 'hilang'
             ? 'hilang'
             : type === 'dikembalikan'
-              ? 'dikembalikan'
-              : 'rusak';
+                ? 'dikembalikan'
+                : 'rusak';
 
     // Send the request to update the status
     router.post(
@@ -159,26 +159,16 @@ const popoverOpen = ref(false);
 <template>
     <!-- <Head title="Pengembalian Buku" /> -->
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="mx-auto mt-5 max-w-6xl overflow-x-auto">
+        <div class="md:mx-auto mt-10 max-w-sm md:max-w-6xl overflow-x-auto md:mt-5">
             <FlashMessage />
-            <Card class="border-transparent">
+            <Card class="border-transparent mt-2">
                 <CardContent>
-                    <div
-                        class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center"
-                    >
+                    <div class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center">
                         <div class="flex items-end gap-2">
-                            <Input
-                                id="searchQuery"
-                                class="w-full sm:w-64"
-                                v-model="searchQuery"
-                                placeholder="Cari..."
-                            />
-                            <select
-                                id="perPage"
-                                v-model="searchBy"
-                                @change="updatePengembalians"
-                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none sm:w-40"
-                            >
+                            <Input id="searchQuery" class="w-full sm:w-64" v-model="searchQuery"
+                                placeholder="Cari..." />
+                            <select id="perPage" v-model="searchBy" @change="updatePengembalians"
+                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none sm:w-40">
                                 <option value="">- Semua Kolom -</option>
                                 <option value="kode_transaksi">
                                     Kode Transaksi
@@ -192,45 +182,25 @@ const popoverOpen = ref(false);
                                 <Tooltip v-if="!popoverOpen">
                                     <Popover>
                                         <TooltipTrigger as-child>
-                                            <PopoverTrigger
-                                                ><Button
-                                                    variant="outline"
-                                                    class="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="18"
-                                                        height="18"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-funnel"
-                                                    >
+                                            <PopoverTrigger><Button variant="outline" class="flex items-center gap-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="lucide lucide-funnel">
                                                         <path
-                                                            d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"
-                                                        />
-                                                    </svg> </Button
-                                            ></PopoverTrigger>
+                                                            d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                                                    </svg> </Button></PopoverTrigger>
                                         </TooltipTrigger>
                                         <TooltipContent>
                                             <span>Filter Data</span>
                                         </TooltipContent>
-                                        <PopoverContent
-                                            ><div class="flex flex-col">
-                                                <Label
-                                                    for="perPage"
-                                                    class="mb-2"
-                                                >
+                                        <PopoverContent>
+                                            <div class="flex flex-col">
+                                                <Label for="perPage" class="mb-2">
                                                     Jumlah Data
                                                 </Label>
-                                                <select
-                                                    id="perPage"
-                                                    v-model="perPage"
-                                                    class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                                                >
+                                                <select id="perPage" v-model="perPage"
+                                                    class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
                                                     <option value="7">
                                                         -- Jumlah Standar --
                                                     </option>
@@ -246,11 +216,9 @@ const popoverOpen = ref(false);
                                                     </option>
                                                 </select>
                                                 <div class="mt-2 flex flex-col">
-                                                    <Button
-                                                        type="button"
+                                                    <Button type="button"
                                                         class="rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
-                                                        @click="resetFilters"
-                                                    >
+                                                        @click="resetFilters">
                                                         Reset Filter
                                                     </Button>
                                                 </div>
@@ -261,19 +229,12 @@ const popoverOpen = ref(false);
                             </TooltipProvider>
                         </div>
                     </div>
-                    <DataTable
-                        :columns="columns"
-                        :data="ReturnBook.data"
-                        :links="ReturnBook.links"
-                        :current_page="props.ReturnBook.current_page"
-                        :per_page="props.ReturnBook.per_page"
-                        :filters="{
+                    <DataTable :columns="columns" :data="ReturnBook.data" :links="ReturnBook.links"
+                        :current_page="props.ReturnBook.current_page" :per_page="props.ReturnBook.per_page" :filters="{
                             search: searchQuery,
                             sortColumn: selectedSort,
                             sortOrder: sortOrder,
-                        }"
-                        @toggleSort="toggleSort"
-                    >
+                        }" @toggleSort="toggleSort">
                         <template #no="{ i, current_page, per_page }">
                             {{ (current_page - 1) * per_page + i + 1 }}
                         </template>
@@ -285,16 +246,9 @@ const popoverOpen = ref(false);
                         </template>
                         <template #actions="{ item: user }">
                             <div class="flex items-center gap-2">
-                                <Dialog
-                                    v-model:open="isOpen[user.id]"
-                                    :key="'hilang-' + user.id"
-                                >
+                                <Dialog v-model:open="isOpen[user.id]" :key="'hilang-' + user.id">
                                     <DialogTrigger as-child>
-                                        <Button
-                                            variant="destructive"
-                                            size="icon"
-                                            class="w-full sm:w-20"
-                                        >
+                                        <Button variant="destructive" size="icon" class="w-20">
                                             Hilang
                                         </Button>
                                     </DialogTrigger>
@@ -308,15 +262,15 @@ const popoverOpen = ref(false);
                                             <h1 class="mt-2">
                                                 Dilaporkan oleh:<br />
                                                 <strong>{{
-                                                    user.users?.name
-                                                }}</strong>
+                                                    user.user?.name
+                                                    }}</strong>
                                             </h1>
 
                                             <h1 class="mt-2">
                                                 Judul buku:<br />
                                                 <strong>{{
-                                                    user.databukus?.judul
-                                                }}</strong>
+                                                    user.book?.judul
+                                                    }}</strong>
                                             </h1>
 
                                             <DialogDescription>
@@ -330,39 +284,26 @@ const popoverOpen = ref(false);
                                         </DialogHeader>
 
                                         <DialogFooter class="gap-2">
-                                            <Button
-                                                variant="destructive"
-                                                @click="
-                                                    handleUpdateStatus(
-                                                        user.id,
-                                                        'hilang',
-                                                    )
-                                                "
-                                            >
+                                            <Button variant="destructive" @click="
+                                                handleUpdateStatus(
+                                                    user.id,
+                                                    'hilang',
+                                                )
+                                                ">
                                                 Konfirmasi Hilang
                                             </Button>
 
                                             <DialogClose as-child>
-                                                <Button
-                                                    type="button"
-                                                    variant="secondary"
-                                                >
+                                                <Button type="button" variant="secondary">
                                                     Batal
                                                 </Button>
                                             </DialogClose>
                                         </DialogFooter>
                                     </DialogContent>
                                 </Dialog>
-                                <Dialog
-                                    v-model:open="isOpenBatal[user.id]"
-                                    :key="'dikembalikan-' + user.id"
-                                >
+                                <Dialog v-model:open="isOpenBatal[user.id]" :key="'dikembalikan-' + user.id">
                                     <DialogTrigger as-child>
-                                        <Button
-                                            variant="secondary"
-                                            size="icon"
-                                            class="w-full sm:w-30"
-                                        >
+                                        <Button variant="secondary" size="icon" class="w-30">
                                             Dikembalikan
                                         </Button>
                                     </DialogTrigger>
@@ -376,15 +317,15 @@ const popoverOpen = ref(false);
                                             <h1 class="mt-2">
                                                 Dikembalikan oleh:<br />
                                                 <strong>{{
-                                                    user.users?.name
-                                                }}</strong>
+                                                    user.user?.name
+                                                    }}</strong>
                                             </h1>
 
                                             <h1 class="mt-2">
                                                 Judul buku:<br />
                                                 <strong>{{
-                                                    user.databukus?.judul
-                                                }}</strong>
+                                                    user.book?.judul
+                                                    }}</strong>
                                             </h1>
 
                                             <DialogDescription>
@@ -397,39 +338,26 @@ const popoverOpen = ref(false);
                                         </DialogHeader>
 
                                         <DialogFooter class="gap-2">
-                                            <Button
-                                                variant="destructive"
-                                                @click="
-                                                    handleUpdateStatus(
-                                                        user.id,
-                                                        'dikembalikan',
-                                                    )
-                                                "
-                                            >
+                                            <Button variant="destructive" @click="
+                                                handleUpdateStatus(
+                                                    user.id,
+                                                    'dikembalikan',
+                                                )
+                                                ">
                                                 Konfirmasi Pengembalian
                                             </Button>
 
                                             <DialogClose as-child>
-                                                <Button
-                                                    type="button"
-                                                    variant="secondary"
-                                                >
+                                                <Button type="button" variant="secondary">
                                                     Batal
                                                 </Button>
                                             </DialogClose>
                                         </DialogFooter>
                                     </DialogContent>
                                 </Dialog>
-                                <Dialog
-                                    v-model:open="isOpenRusak[user.id]"
-                                    :key="'rusak-' + user.id"
-                                >
+                                <Dialog v-model:open="isOpenRusak[user.id]" :key="'rusak-' + user.id">
                                     <DialogTrigger as-child>
-                                        <Button
-                                            variant="warning_orange"
-                                            size="icon"
-                                            class="w-full sm:w-20"
-                                        >
+                                        <Button variant="warning_orange" size="icon" class="w-20">
                                             Rusak
                                         </Button>
                                     </DialogTrigger>
@@ -443,15 +371,15 @@ const popoverOpen = ref(false);
                                             <h1 class="mt-2">
                                                 Dilaporkan oleh:<br />
                                                 <strong>{{
-                                                    user.users?.name
-                                                }}</strong>
+                                                    user.user?.name
+                                                    }}</strong>
                                             </h1>
 
                                             <h1 class="mt-2">
                                                 Judul buku:<br />
                                                 <strong>{{
-                                                    user.databukus?.judul
-                                                }}</strong>
+                                                    user.book?.judul
+                                                    }}</strong>
                                             </h1>
 
                                             <DialogDescription>
@@ -465,23 +393,17 @@ const popoverOpen = ref(false);
                                         </DialogHeader>
 
                                         <DialogFooter class="gap-2">
-                                            <Button
-                                                variant="destructive"
-                                                @click="
-                                                    handleUpdateStatus(
-                                                        user.id,
-                                                        'rusak',
-                                                    )
-                                                "
-                                            >
+                                            <Button variant="destructive" @click="
+                                                handleUpdateStatus(
+                                                    user.id,
+                                                    'rusak',
+                                                )
+                                                ">
                                                 Konfirmasi Rusak
                                             </Button>
 
                                             <DialogClose as-child>
-                                                <Button
-                                                    type="button"
-                                                    variant="secondary"
-                                                >
+                                                <Button type="button" variant="secondary">
                                                     Batal
                                                 </Button>
                                             </DialogClose>
@@ -492,12 +414,12 @@ const popoverOpen = ref(false);
                         </template>
                     </DataTable>
                 </CardContent>
+                <div class="mb-10 mr-5 ml-6 md:mr-0 md:ml-0">
+                    <Pagination :previousPage="pagination.previous" :nextPage="pagination.next"
+                        :links="props.ReturnBook.links" />
+                </div>
             </Card>
         </div>
-        <Pagination
-            :previousPage="pagination.previous"
-            :nextPage="pagination.next"
-            :links="props.ReturnBook.links"
-        />
+
     </AppLayout>
 </template>

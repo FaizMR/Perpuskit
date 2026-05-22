@@ -13,7 +13,7 @@ const { book } = defineProps<{
 console.log(book.data);
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Data Buku',
+        title: 'Manajemen Buku',
         href: index().url,
     },
     {

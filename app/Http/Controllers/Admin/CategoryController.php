@@ -35,7 +35,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    /** 
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -48,6 +48,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
+        // validate ada di file StoreCategoryRequest
         Category::create($request->validated());
 
         return redirect()
@@ -78,6 +79,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        // validate ada di file UpdateCategoryRequest
         $category->update($request->validated());
 
         return redirect()

@@ -153,26 +153,16 @@ const popoverOpen = ref(false);
 <template>
     <!-- <Head title="Pengajuan Saya" /> -->
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="mx-auto mt-5 max-w-6xl overflow-x-auto">
+        <div class="md:mx-auto mt-10 max-w-sm md:max-w-6xl overflow-x-auto md:mt-5">
             <FlashMessage />
-            <Card class="border-transparent">
+            <Card class="border-transparent mt-2">
                 <CardContent>
-                    <div
-                        class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center"
-                    >
+                    <div class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center">
                         <div class="flex items-end gap-2">
-                            <Input
-                                id="searchQuery"
-                                class="w-full sm:w-64"
-                                v-model="searchQuery"
-                                placeholder="Cari..."
-                            />
-                            <select
-                                id="perPage"
-                                v-model="searchBy"
-                                @change="updatepengajuananggotas"
-                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none sm:w-40"
-                            >
+                            <Input id="searchQuery" class="w-full sm:w-64" v-model="searchQuery"
+                                placeholder="Cari..." />
+                            <select id="perPage" v-model="searchBy" @change="updatepengajuananggotas"
+                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none sm:w-40">
                                 <option value="">- Semua Kolom -</option>
                                 <option value="kode_transaksi">
                                     Kode Transaksi
@@ -184,44 +174,23 @@ const popoverOpen = ref(false);
                             <Tooltip v-if="!popoverOpen">
                                 <Popover>
                                     <TooltipTrigger as-child>
-                                        <PopoverTrigger
-                                            ><Button
-                                                variant="outline"
-                                                class="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700"
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="lucide lucide-funnel"
-                                                >
+                                        <PopoverTrigger><Button variant="outline" class="flex items-center gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-funnel">
                                                     <path
-                                                        d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"
-                                                    />
-                                                </svg> </Button
-                                        ></PopoverTrigger>
+                                                        d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                                                </svg> </Button></PopoverTrigger>
                                     </TooltipTrigger>
                                     <TooltipContent>
                                         <span>Filter Data</span>
                                     </TooltipContent>
-                                    <PopoverContent
-                                        ><div class="flex flex-col">
-                                            <Label
-                                                for="statusSearch"
-                                                class="mb-2"
-                                                >Status</Label
-                                            >
-                                            <select
-                                                id="statusSearch"
-                                                v-model="statusSearch"
-                                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                                            >
+                                    <PopoverContent>
+                                        <div class="flex flex-col">
+                                            <Label for="statusSearch" class="mb-2">Status</Label>
+                                            <select id="statusSearch" v-model="statusSearch"
+                                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
                                                 <option value="">
                                                     -- Semua Status --
                                                 </option>
@@ -232,16 +201,9 @@ const popoverOpen = ref(false);
                                                     Dibatalkan
                                                 </option>
                                             </select>
-                                            <Label
-                                                for="perPage"
-                                                class="mt-3 mb-2"
-                                                >Jumlah Data</Label
-                                            >
-                                            <select
-                                                id="perPage"
-                                                v-model="perPage"
-                                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                                            >
+                                            <Label for="perPage" class="mt-3 mb-2">Jumlah Data</Label>
+                                            <select id="perPage" v-model="perPage"
+                                                class="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
                                                 <option value="7">
                                                     -- Jumlah Standar --
                                                 </option>
@@ -251,33 +213,24 @@ const popoverOpen = ref(false);
                                                 <option value="50">50</option>
                                             </select>
                                             <div class="mt-2 flex flex-col">
-                                                <Button
-                                                    type="button"
+                                                <Button type="button"
                                                     class="rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
-                                                    @click="resetFilters"
-                                                >
+                                                    @click="resetFilters">
                                                     Reset Filter
                                                 </Button>
                                             </div>
-                                        </div></PopoverContent
-                                    >
+                                        </div>
+                                    </PopoverContent>
                                 </Popover>
                             </Tooltip>
                         </TooltipProvider>
                     </div>
-                    <DataTable
-                        :columns="columns"
-                        :data="Myrequest.data"
-                        :links="Myrequest.links"
-                        :current_page="props.Myrequest.current_page"
-                        :per_page="props.Myrequest.per_page"
-                        :filters="{
+                    <DataTable :columns="columns" :data="Myrequest.data" :links="Myrequest.links"
+                        :current_page="props.Myrequest.current_page" :per_page="props.Myrequest.per_page" :filters="{
                             search: searchQuery,
                             sortColumn: selectedSort,
                             sortOrder: sortOrder,
-                        }"
-                        @toggleSort="toggleSort"
-                    >
+                        }" @toggleSort="toggleSort">
                         <template #no="{ i, current_page, per_page }">
                             {{ (current_page - 1) * per_page + i + 1 }}
                         </template>
@@ -291,35 +244,24 @@ const popoverOpen = ref(false);
                             <div class="flex items-center gap-2">
                                 <div class="group relative inline-block">
                                     <!-- Show -->
-                                    <Link
-                                        :href="show(pengajuananggotas.id)"
-                                        as="button"
-                                    >
+                                    <Link :href="show(pengajuananggotas.id)" as="button">
                                         <Button variant="outline" size="icon">
                                             <Eye class="h-4 w-4" />
                                         </Button>
                                     </Link>
 
                                     <span
-                                        class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-black px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition group-hover:opacity-100"
-                                    >
+                                        class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-black px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition group-hover:opacity-100">
                                         Lihat
                                     </span>
                                 </div>
 
-                                <Dialog
-                                    v-model:open="isOpen[pengajuananggotas.id]"
-                                    :key="'batal-' + pengajuananggotas.id"
-                                    v-if="
+                                <Dialog v-model:open="isOpen[pengajuananggotas.id]"
+                                    :key="'batal-' + pengajuananggotas.id" v-if="
                                         pengajuananggotas.status === 'pending'
-                                    "
-                                >
+                                    ">
                                     <DialogTrigger as-child>
-                                        <Button
-                                            variant="secondary"
-                                            size="icon"
-                                            class="w-full sm:w-20"
-                                        >
+                                        <Button variant="secondary" size="icon" class="w-20">
                                             Batalkan
                                         </Button>
                                     </DialogTrigger>
@@ -335,7 +277,7 @@ const popoverOpen = ref(false);
                                                 Pengajuan oleh:<br />
                                                 <strong>
                                                     {{
-                                                        pengajuananggotas.users
+                                                        pengajuananggotas.user
                                                             ?.name
                                                     }}
                                                 </strong>
@@ -346,7 +288,7 @@ const popoverOpen = ref(false);
                                                 <strong>
                                                     {{
                                                         pengajuananggotas
-                                                            .databukus?.judul
+                                                            .book?.judul
                                                     }}
                                                 </strong>
                                             </h1>
@@ -360,71 +302,47 @@ const popoverOpen = ref(false);
                                         </DialogHeader>
 
                                         <DialogFooter class="gap-2">
-                                            <Button
-                                                variant="destructive"
-                                                @click="
-                                                    handleBatalkanPengajuan(
-                                                        pengajuananggotas.id,
-                                                    )
-                                                "
-                                            >
+                                            <Button variant="destructive" @click="
+                                                handleBatalkanPengajuan(
+                                                    pengajuananggotas.id,
+                                                )
+                                                ">
                                                 Batalkan Pengajuan
                                             </Button>
 
                                             <DialogClose as-child>
-                                                <Button
-                                                    type="button"
-                                                    variant="secondary"
-                                                >
+                                                <Button type="button" variant="secondary">
                                                     Batal
                                                 </Button>
                                             </DialogClose>
                                         </DialogFooter>
                                     </DialogContent>
                                 </Dialog>
-                                <Dialog
-                                    v-else
-                                    v-model:open="
-                                        isOpenHapus[pengajuananggotas.id]
-                                    "
-                                    :key="pengajuananggotas.id"
-                                >
+                                <Dialog v-else v-model:open="isOpenHapus[pengajuananggotas.id]
+                                    " :key="pengajuananggotas.id">
                                     <DialogTrigger as-child>
-                                        <Button
-                                            variant="destructive"
-                                            size="icon"
-                                            class="w-full sm:w-20"
-                                        >
+                                        <Button variant="destructive" size="icon" class="w-20">
                                             Hapus
                                         </Button>
                                     </DialogTrigger>
                                     <DialogContent class="sm:max-w-md">
                                         <DialogHeader>
-                                            <DialogTitle
-                                                >Konfirmasi Hapus</DialogTitle
-                                            >
+                                            <DialogTitle>Konfirmasi Hapus</DialogTitle>
                                             <DialogDescription>
                                                 Apakah Anda yakin ingin
                                                 menghapus pengguna ini?
                                             </DialogDescription>
                                         </DialogHeader>
                                         <DialogFooter class="gap-2">
-                                            <Button
-                                                variant="destructive"
-                                                @click="
-                                                    handleDelete(
-                                                        pengajuananggotas.id,
-                                                    )
-                                                "
-                                            >
+                                            <Button variant="destructive" @click="
+                                                handleDelete(
+                                                    pengajuananggotas.id,
+                                                )
+                                                ">
                                                 Hapus
                                             </Button>
                                             <DialogClose as-child>
-                                                <Button
-                                                    type="button"
-                                                    variant="secondary"
-                                                    >Batal</Button
-                                                >
+                                                <Button type="button" variant="secondary">Batal</Button>
                                             </DialogClose>
                                         </DialogFooter>
                                     </DialogContent>
@@ -433,12 +351,11 @@ const popoverOpen = ref(false);
                         </template>
                     </DataTable>
                 </CardContent>
+                <div class="mb-10 mr-5 ml-6 md:mr-0 md:ml-0">
+                    <Pagination :previousPage="pagination.previous" :nextPage="pagination.next"
+                        :links="props.Myrequest.links" />
+                </div>
             </Card>
         </div>
-        <Pagination
-            :previousPage="pagination.previous"
-            :nextPage="pagination.next"
-            :links="props.Myrequest.links"
-        />
     </AppLayout>
 </template>

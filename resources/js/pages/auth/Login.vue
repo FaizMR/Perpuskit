@@ -19,38 +19,20 @@ defineProps<{
 </script>
 
 <template>
-    <AuthBase
-        title="Masuk ke akun Anda"
-        description="Masukkan email dan kata sandi Anda di bawah ini untuk masuk."
-    >
+    <AuthBase title="Masuk ke akun Anda" description="Masukkan email dan kata sandi Anda di bawah ini untuk masuk.">
         <!-- <Head title="Log in" /> -->
 
-        <div
-            v-if="status"
-            class="mb-4 text-center text-sm font-medium text-green-600"
-        >
+        <div v-if="status" class="mb-4 text-center text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
-        <Form
-            v-bind="store.form()"
-            :reset-on-success="['password']"
-            v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
-        >
+        <Form v-bind="store.form()" :reset-on-success="['password']" v-slot="{ errors, processing }"
+            class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">
                     <Label for="email">Alamat Email</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        name="email"
-                        required
-                        autofocus
-                        :tabindex="1"
-                        autocomplete="email"
-                        placeholder="email@gmail.com"
-                    />
+                    <Input id="email" type="email" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@gmail.com" />
                     <InputError :message="errors.email" />
                 </div>
 
@@ -66,15 +48,8 @@ defineProps<{
                             Lupa kata sandi?
                         </TextLink>
                     </div> -->
-                    <Input
-                        id="password"
-                        type="password"
-                        name="password"
-                        required
-                        :tabindex="2"
-                        autocomplete="current-password"
-                        placeholder="Kata Sandi"
-                    />
+                    <Input id="password" type="password" name="password" required :tabindex="2"
+                        autocomplete="current-password" placeholder="Kata Sandi" />
                     <InputError :message="errors.password" />
                 </div>
 
@@ -85,25 +60,13 @@ defineProps<{
                     </Label>
                 </div>
 
-                <Button
-                    type="submit"
-                    class="mt-4 w-full"
-                    :tabindex="4"
-                    :disabled="processing"
-                    data-test="login-button"
-                >
-                    <LoaderCircle
-                        v-if="processing"
-                        class="h-4 w-4 animate-spin"
-                    />
+                <Button type="submit" class="mt-4 w-full" :tabindex="4" :disabled="processing" data-test="login-button">
+                    <LoaderCircle v-if="processing" class="h-4 w-4 animate-spin" />
                     Masuk
                 </Button>
             </div>
 
-            <div
-                class="text-center text-sm text-muted-foreground"
-                v-if="canRegister"
-            >
+            <div class="text-center text-sm text-muted-foreground" v-if="canRegister">
                 Belum punya akun?
                 <TextLink :href="register()" :tabindex="5">Daftar</TextLink>
             </div>

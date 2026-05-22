@@ -37,6 +37,29 @@ class StoreUserRequest extends FormRequest
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
             'profile_user.mimes' => 'File harus berupa JPG, JPEG, PNG, GIF, atau PDF.',
             'level.required' => 'Level harus admin, petugas, atau anggota.',
+            // Validasi String & Format
+            'string'    => ':attribute harus berupa teks.',
+            'email'     => 'Format email tidak valid.',
+
+            // Validasi Keunikan & Kecocokan
+            'unique'    => ':attribute sudah terdaftar sebelumnya.',
+            'confirmed' => 'Konfirmasi :attribute tidak cocok.',
+
+            // Validasi Panjang & Batas
+            'min'       => [
+                'string'   => ':attribute minimal harus :min karakter.',
+            ],
+            'max'       => [
+                'string'   => ':attribute maksimal :max karakter.',
+                'file'     => 'Ukuran :attribute maksimal 10MB.',
+            ],
+
+            // Validasi File
+            'file'      => ':attribute harus berupa file.',
+            'mimes'     => ':attribute harus berformat: :values.',
+
+            // Validasi Pilihan (In)
+            'in'        => 'Pilihan :attribute tidak valid.',
         ];
     }
 }

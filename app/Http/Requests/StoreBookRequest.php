@@ -36,7 +36,28 @@ class StoreBookRequest extends FormRequest
     {
         return [
             'tanggal_terbit' => 'Tanggal Terbit Buku wajib di isi',
-            'category_id' => 'Kategori Buku wajib di isi'
+            'category_id' => 'Kategori Buku wajib di isi',
+
+            // Validasi String & Format
+            'string'    => ':attribute harus berupa teks.',
+
+            // Validasi Keunikan & Kecocokan
+            'unique'    => ':attribute sudah terdaftar sebelumnya.',
+
+            // Validasi Panjang & Batas
+            'min'       => [
+                'string'   => ':attribute minimal harus :min karakter.',
+            ],
+            'max'       => [
+                'string'   => ':attribute maksimal :max karakter.',
+                'file'     => 'Ukuran :attribute maksimal 10MB.',
+            ],
+
+            // Validasi Pilihan & Database (Baru)
+            'in'          => 'Pilihan :attribute tidak valid.',
+            'exists'      => ':attribute yang dipilih tidak tersedia.', // Untuk category_id
+            'date_format' => ':attribute harus menggunakan format YYYY-MM-DD.', // Untuk tanggal_terbit
+            'integer'     => ':attribute harus berupa angka bulat.', // Untuk jumlah_halaman
         ];
     }
 }
