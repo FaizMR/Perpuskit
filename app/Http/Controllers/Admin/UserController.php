@@ -62,6 +62,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request, UserService $userService)
     {
+        // validate ada di file StoreUserRequest
         $userService->create(
             $request->validated(),
             $request->file('profile_user')
@@ -113,6 +114,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        // validate ada di file UpdateUserRequest
         $this->userService->updateUser($user, $request->validated());
 
         return redirect()

@@ -45,12 +45,12 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-
+        // validate ada di file StoreBookRequest
         Book::create($request->validated());
 
         return redirect()
             ->route('databukus.index')
-            ->with('success', 'Data buku berhasil ditambahkan.');
+            ->with('success', 'Manajemen Buku berhasil ditambahkan.');
     }
 
 
@@ -82,11 +82,12 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $databuku)
     {
+        // validate ada di file UpdateBookRequest
         $databuku->update($request->validated());
 
         return redirect()
             ->route('databukus.index')
-            ->with('success', 'Data buku berhasil diperbarui.');
+            ->with('success', 'Manajemen Buku berhasil diperbarui.');
     }
 
 
@@ -96,6 +97,6 @@ class BookController extends Controller
     public function destroy(Book $databuku)
     {
         $databuku->delete();
-        return redirect()->back()->with('error', 'Data buku berhasil dihapus.');
+        return redirect()->back()->with('error', 'Manajemen Buku berhasil dihapus.');
     }
 }

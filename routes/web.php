@@ -100,10 +100,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('dashboard.petugas');
     });
     Route::group(['middleware' => ['auth', 'verified', 'can:petugasadmin']], function () {
-        Route::resource('pengajuanpeminjamans', LoanRequestController::class);
-        Route::resource('statuspeminjamans', LoanStatusController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('databukus', BookController::class);
+        Route::resource('pengajuanpeminjamans', LoanRequestController::class);
+        Route::resource('statuspeminjamans', LoanStatusController::class);
         Route::resource('permintaans', LoanExtensionRequestController::class);
         Route::resource('pengembalians', ReturnBookController::class);
         Route::resource('pembayarans', LoanPaymentController::class);

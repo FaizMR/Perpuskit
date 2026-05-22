@@ -26,6 +26,12 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        host: '0.0.0.0', // Membuka akses Vite ke jaringan lokal
+        hmr: {
+            host: '10.227.176.181' // Ganti dengan IP Tethering Laptop Anda
+        },
+    },
 });
 // 2️⃣ Load Wayfinder HANYA di production
 // if (process.env.NODE_ENV === 'production') {

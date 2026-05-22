@@ -129,17 +129,14 @@ const formatRupiah = (value: number) => {
 </script>
 
 <template>
+
     <Head titele="Beranda" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="space-y-2 bg-background p-3">
             <!-- Statistik -->
-            <div
-                class="mx-auto grid max-w-5xl grid-cols-1 gap-2 md:grid-cols-3"
-            >
+            <div class="mx-auto grid max-w-5xl grid-cols-1 gap-2 md:grid-cols-3 lg:max-w-7xl">
                 <Card>
-                    <CardHeader
-                        class="flex flex-row items-center justify-between"
-                    >
+                    <CardHeader class="flex flex-row items-center justify-between">
                         <div class="flex items-center gap-2">
                             <BookOpen class="h-5 w-5 text-primary" />
                             <CardTitle class="text-xl">Peminjaman</CardTitle>
@@ -148,23 +145,17 @@ const formatRupiah = (value: number) => {
                     <CardContent class="space-y-2 text-sm">
                         <Table>
                             <TableBody>
-                                <TableRow
-                                    v-for="row in peminjaman"
-                                    :key="row.label"
-                                    class="text-xs"
-                                >
+                                <TableRow v-for="row in peminjaman" :key="row.label" class="text-xs">
                                     <TableCell>{{ row.label }}</TableCell>
                                     <TableCell>{{ row.value }}</TableCell>
-                                </TableRow></TableBody
-                            >
+                                </TableRow>
+                            </TableBody>
                         </Table>
                     </CardContent>
                 </Card>
 
                 <Card>
-                    <CardHeader
-                        class="flex flex-row items-center justify-between"
-                    >
+                    <CardHeader class="flex flex-row items-center justify-between">
                         <div class="flex items-center gap-2">
                             <Library class="h-5 w-5 text-primary" />
                             <CardTitle class="text-xl">Buku</CardTitle>
@@ -172,11 +163,7 @@ const formatRupiah = (value: number) => {
                     </CardHeader>
                     <CardContent class="space-y-2 text-sm">
                         <Table>
-                            <TableRow
-                                v-for="row in Buku"
-                                :key="row.label"
-                                class="text-xs"
-                            >
+                            <TableRow v-for="row in Buku" :key="row.label" class="text-xs">
                                 <TableCell>{{ row.label }}</TableCell>
                                 <TableCell>{{ row.value }}</TableCell>
                             </TableRow>
@@ -185,9 +172,7 @@ const formatRupiah = (value: number) => {
                 </Card>
 
                 <Card>
-                    <CardHeader
-                        class="flex flex-row items-center justify-between"
-                    >
+                    <CardHeader class="flex flex-row items-center justify-between">
                         <div class="flex items-center gap-2">
                             <Users class="h-5 w-5 text-primary" />
                             <CardTitle class="text-xl">Anggota</CardTitle>
@@ -195,11 +180,7 @@ const formatRupiah = (value: number) => {
                     </CardHeader>
                     <CardContent class="space-y-2 text-sm">
                         <Table>
-                            <TableRow
-                                v-for="row in Pengguna"
-                                :key="row.label"
-                                class="text-xs"
-                            >
+                            <TableRow v-for="row in Pengguna" :key="row.label" class="text-xs">
                                 <TableCell>{{ row.label }}</TableCell>
                                 <TableCell>{{ row.value }}</TableCell>
                             </TableRow>
@@ -207,11 +188,10 @@ const formatRupiah = (value: number) => {
                     </CardContent>
                 </Card>
 
-                <Card class="h-73 lg:col-span-2">
+                <Card class="h-73 col-span-1 md:col-span-2">
                     <CardHeader>
                         <div class="flex items-center justify-between gap-2">
-                            <CardTitle class="flex items-center text-xl"
-                                >Aktivitas Peminjaman Buku Hari Ini
+                            <CardTitle class="flex items-center text-xl">Aktivitas Peminjaman Buku Hari Ini
                             </CardTitle>
                         </div>
                     </CardHeader>
@@ -226,27 +206,18 @@ const formatRupiah = (value: number) => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow
-                                    v-for="row in recentTransactions"
-                                    :key="row.id"
-                                    class="text-[11px]"
-                                >
+                                <TableRow v-for="row in recentTransactions" :key="row.id" class="text-[11px]">
                                     <TableCell>{{ row.id }}</TableCell>
                                     <TableCell>{{ row.book.judul }}</TableCell>
                                     <TableCell>{{ row.user.name }}</TableCell>
                                     <TableCell>
-                                        <Badge
-                                            :variant="statusVariant(row.status)"
-                                        >
+                                        <Badge :variant="statusVariant(row.status)">
                                             {{ row.status }}
                                         </Badge>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow v-if="!recentTransactions.length">
-                                    <TableCell
-                                        :colspan="4"
-                                        class="py-4 text-center text-muted-foreground"
-                                    >
+                                    <TableCell :colspan="4" class="py-4 text-center text-muted-foreground">
                                         Tidak ada aktivitas hari ini.
                                     </TableCell>
                                 </TableRow>
@@ -271,15 +242,11 @@ const formatRupiah = (value: number) => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow
-                                    v-for="row in topDenda"
-                                    :key="row.id"
-                                    class="text-[11px]"
-                                >
+                                <TableRow v-for="row in topDenda" :key="row.id" class="text-[11px]">
                                     <TableCell>{{ row.user.name }}</TableCell>
                                     <TableCell>{{
                                         formatRupiah(row.denda)
-                                    }}</TableCell>
+                                        }}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>

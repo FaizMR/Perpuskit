@@ -63,7 +63,8 @@ class LoanRequestController  extends Controller
      */
     public function show(Loan $pengajuanpeminjaman)
     {
-        $pengajuanpeminjaman->load(['user', 'book']);
+        $pengajuanpeminjaman->load(['book', 'user']);
+        // dd($pengajuanpeminjaman);
         return Inertia::render('petugas/loanrequest/Show', [
             'currentPengajuan' => new LoanResource($pengajuanpeminjaman),
         ]);
